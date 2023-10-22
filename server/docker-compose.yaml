@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  postgres:
+    container_name: postgres
+    image: postgres
+    volumes:
+      - ./migrations/createdb.sql:/docker-entrypoint-initdb.d/createdb.sql
+    environment:
+      - POSTGRES_PASSWORD=blockme
+      - POSTGRES_USER=boombacks
+      - POSTGRES_DB=hackaton
+    ports:
+      - "5433:5432"
+    restart: unless-stopped
